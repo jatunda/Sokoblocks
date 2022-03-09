@@ -1,0 +1,82 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Reference",
+"class": "Enums",
+"language": "GDScript",
+"path": "res://scripts/Enums.gd"
+}, {
+"base": "Area2D",
+"class": "Movable",
+"language": "GDScript",
+"path": "res://scenes/Movable.gd"
+}, {
+"base": "Pushable",
+"class": "Player",
+"language": "GDScript",
+"path": "res://scripts/PlayerController.gd"
+}, {
+"base": "Movable",
+"class": "Pullable",
+"language": "GDScript",
+"path": "res://Pullable.gd"
+}, {
+"base": "Movable",
+"class": "Pushable",
+"language": "GDScript",
+"path": "res://scenes/Pushable.gd"
+}, {
+"base": "Reference",
+"class": "Utils",
+"language": "GDScript",
+"path": "res://scripts/Utils.gd"
+} ]
+_global_script_class_icons={
+"Enums": "",
+"Movable": "",
+"Player": "",
+"Pullable": "",
+"Pushable": "",
+"Utils": ""
+}
+
+[application]
+
+config/name="Sokoban"
+run/main_scene="res://scenes/main.tscn"
+config/icon="res://sprites/icon.png"
+
+[autoload]
+
+Globals="*res://scripts/Globals.gd"
+
+[debug]
+
+settings/stdout/print_fps=true
+settings/stdout/verbose_stdout=true
+
+[display]
+
+window/vsync/use_vsync=false
+
+[layer_names]
+
+2d_physics/layer_1="General"
+2d_physics/layer_2="Player"
+2d_physics/layer_3="Pickup"
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"
