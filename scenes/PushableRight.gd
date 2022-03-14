@@ -54,3 +54,10 @@ func can_move(velocity:Vector2, recurse: bool=true) -> bool:
 func move(velocity:Vector2, recurse:bool=true) -> void:
 	rotation_speedup = 7
 	.move(velocity.rotated(rotation_radians), false)
+	
+func save() -> void:
+	.save()
+	var param_dict = {
+		"rotation_speedup": 1
+	}
+	SaveManager.save(self, param_dict)

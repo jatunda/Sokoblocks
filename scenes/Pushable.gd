@@ -5,7 +5,7 @@ class_name Pushable
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-
+var pushed_obj = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -37,6 +37,8 @@ func can_move(velocity:Vector2, recurse: bool=true) -> bool:
 func move(velocity:Vector2, recurse:bool = true) -> void:
 	var blocking_obj = .get_blocking_obj(velocity) as Pushable
 	if(recurse && blocking_obj != null):
-		print("ASDF", self, blocking_obj)
 		blocking_obj.move(velocity, false)
+		pushed_obj = blocking_obj
+	else:
+		pushed_obj = null
 	.move(velocity, false)

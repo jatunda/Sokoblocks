@@ -16,6 +16,7 @@ var moving_dir = Vector2.ZERO
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	position = snap_2_grid(position)
+	save()
 	pass # Replace with function body.
 
 
@@ -70,5 +71,13 @@ func _on_Tween_tween_completed(object, key):
 	if(object != self):
 		return
 	if(key == NodePath(":position")):
-#		print("ayayayaya")
 		moving_dir = Vector2.ZERO
+	
+		
+func save() -> void:
+	var save_data = {
+		"position":position
+	}
+	SaveManager.save(self, save_data)
+	pass
+	

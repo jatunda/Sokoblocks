@@ -10,6 +10,7 @@ class_name Player
 
 onready var pickupDetector = $PickupDetection
 export var spriteFrames : SpriteFrames;
+var pulled_obj = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -33,10 +34,20 @@ func process_pickup(pickupType):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var velocity = get_input();
+	if Input.is_action_just_pressed("game_reset"):
+		save()
+		SaveManager.reset()
+		return
+	if Input.is_action_just_pressed("game_undo"):
+		SaveManager.undo()
+		return	
+	
+	
+	var velocity = get_movement_input();
 	.try_move(velocity)
 		
-func get_input():
+func get_movement_input():
+	
 	var velocity  = Vector2.ZERO	
 	
 	if Input.is_action_pressed("ui_left") || Input.is_action_just_pressed("ui_left"):
@@ -56,7 +67,19 @@ func get_input():
 func move(velocity:Vector2, recurse:bool=true) ->void:
 	.move(velocity)
 	var pull_obj = get_blocking_obj(-velocity) as Pullable
+	pulled_obj = pull_obj
 	if(pull_obj != null):
 		pull_obj.try_move(velocity)
+	save()
+	SaveManager.next_frame()
 	
+
+	
+func save():
+	.save()
+	if(pushed_obj != null):
+		pushed_obj.save()
+	if(pulled_obj != null):
+		pulled_obj.save()
+
 
