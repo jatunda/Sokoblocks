@@ -22,8 +22,11 @@ shape = SubResource( 5 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 collision_mask = 3
+collide_with_areas = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 6 )
 
 [node name="Tween" type="Tween" parent="."]
+
+[connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]

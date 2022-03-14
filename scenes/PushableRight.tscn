@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/PushableRight.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Pushable.tscn" type="PackedScene" id=2]
+
+[node name="PushableRight" instance=ExtResource( 2 )]
+script = ExtResource( 1 )
+
+[node name="AnimatedSprite" parent="." index="2"]
+self_modulate = Color( 1, 0.588235, 0, 1 )
+scale = Vector2( 0.8, 0.8 )

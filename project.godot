@@ -34,6 +34,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scenes/Pushable.gd"
 }, {
+"base": "Pushable",
+"class": "PushableRight",
+"language": "GDScript",
+"path": "res://scenes/PushableRight.gd"
+}, {
+"base": "Pushable",
+"class": "Swappable",
+"language": "GDScript",
+"path": "res://scenes/Swappable.gd"
+}, {
 "base": "Reference",
 "class": "Utils",
 "language": "GDScript",
@@ -45,12 +55,14 @@ _global_script_class_icons={
 "Player": "",
 "Pullable": "",
 "Pushable": "",
+"PushableRight": "",
+"Swappable": "",
 "Utils": ""
 }
 
 [application]
 
-config/name="Sokoban"
+config/name="Sokoblocks"
 run/main_scene="res://scenes/main.tscn"
 config/icon="res://sprites/icon.png"
 

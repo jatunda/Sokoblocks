@@ -53,7 +53,7 @@ func get_input():
 	velocity = velocity * Globals.tileSize
 	return velocity
 	
-func move(velocity):
+func move(velocity:Vector2, recurse:bool=true) ->void:
 	.move(velocity)
 	var pull_obj = get_blocking_obj(-velocity) as Pullable
 	if(pull_obj != null):

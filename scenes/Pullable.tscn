@@ -5,3 +5,7 @@
 
 [node name="Pullable" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+
+[node name="AnimatedSprite" parent="." index="2"]
+modulate = Color( 0, 0.486275, 1, 1 )
+scale = Vector2( 0.93, 0.93 )

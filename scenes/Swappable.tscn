@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/Swappable.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Pullable.tscn" type="PackedScene" id=2]
+
+[node name="Swappable" instance=ExtResource( 2 )]
+script = ExtResource( 1 )
+
+[node name="AnimatedSprite" parent="." index="2"]
+modulate = Color( 1, 0, 0, 1 )

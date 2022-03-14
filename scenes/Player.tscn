@@ -8,14 +8,15 @@
 radius = 20.0
 
 [node name="Player" instance=ExtResource( 1 )]
+collision_layer = 2
 script = ExtResource( 2 )
 spriteFrames = ExtResource( 3 )
 
-[node name="RayCast2D" parent="." index="1"]
-collide_with_areas = true
+[node name="AnimatedSprite" parent="." index="2"]
+frames = ExtResource( 3 )
 
 [node name="PickupDetection" type="Area2D" parent="." index="4"]
-collision_layer = 2
+collision_layer = 4
 collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupDetection" index="0"]
