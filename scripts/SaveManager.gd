@@ -24,7 +24,7 @@ func _ready():
 #	pass
 	
 func next_frame() -> void:
-	print("Saving frame (", level_memory.size(), ") : " , currentFrame)
+#	print("Saving frame (", level_memory.size(), ") : " , currentFrame)
 	level_memory.append(currentFrame)
 	currentFrame = {}
 	

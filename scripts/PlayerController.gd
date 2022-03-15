@@ -72,6 +72,7 @@ func move(velocity:Vector2, recurse:bool=true) ->void:
 		pull_obj.try_move(velocity)
 	save()
 	SaveManager.next_frame()
+	save()
 	
 
 	
