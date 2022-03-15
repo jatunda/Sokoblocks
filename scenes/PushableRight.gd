@@ -35,7 +35,7 @@ func _process(delta):
 		
 		
 	if(!is_moving()):
-		var goalPos = snap_2_grid(position)	
+		var goalPos = Utils.snap_2_grid(position)	
 		var distanceSqToPlayer = Globals.player.position.distance_squared_to(position)
 		if(distanceSqToPlayer <= Globals.tileSize *Globals.tileSize * 1.1):
 			var directionFromPlayer = Globals.player.position.direction_to(position)

@@ -11,6 +11,7 @@ class_name Player
 onready var pickupDetector = $PickupDetection
 export var spriteFrames : SpriteFrames;
 var pulled_obj = null
+var to_be_saved = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -72,15 +73,20 @@ func move(velocity:Vector2, recurse:bool=true) ->void:
 		pull_obj.try_move(velocity)
 	save()
 	SaveManager.next_frame()
-	save()
+
 	
 
 	
 func save():
+	for obj in to_be_saved:
+		obj.save()
+	to_be_saved = []
 	.save()
 	if(pushed_obj != null):
 		pushed_obj.save()
+		to_be_saved.append(pushed_obj)
 	if(pulled_obj != null):
 		pulled_obj.save()
+		to_be_saved.append(pulled_obj)
 
 

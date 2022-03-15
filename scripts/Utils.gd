@@ -13,3 +13,9 @@ static func merge_dict(target:Dictionary, patch:Dictionary) -> void:
 				target[key] = patch[key]
 		else:
 			target[key] = patch[key]
+
+static func snap_2_grid(pos:Vector2) -> Vector2:
+	pos -= Vector2.ONE * Globals.tileSize/2
+	pos = pos.snapped(Vector2.ONE * Globals.tileSize)
+	pos += Vector2.ONE * Globals.tileSize/2
+	return pos

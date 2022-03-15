@@ -15,7 +15,7 @@ var moving_dir = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	position = snap_2_grid(position)
+	position = Utils.snap_2_grid(position)
 	save()
 	pass # Replace with function body.
 
@@ -36,7 +36,7 @@ func can_move(velocity:Vector2, recurse:bool=true) -> bool:
 func move(deltaPos:Vector2, recurse:bool=true)->void: 
 
 	var goalPos = position + deltaPos
-	goalPos = snap_2_grid(goalPos)
+	goalPos = Utils.snap_2_grid(goalPos)
 	tween.interpolate_property(self, "position", position, goalPos,
 		1.0/Globals.movementSpeed, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	tween.start()
@@ -46,16 +46,10 @@ func move(deltaPos:Vector2, recurse:bool=true)->void:
 func is_moving() -> bool:
 	return moving_dir != Vector2.ZERO
 	
+	
 func is_moving_in_direction(vector) -> bool:
 	return is_moving() && abs(vector.angle_to(moving_dir)) < 1.0
-
-
-func snap_2_grid(pos:Vector2) -> Vector2:
-	pos -= Vector2.ONE * Globals.tileSize/2
-	pos = pos.snapped(Vector2.ONE * Globals.tileSize)
-	pos += Vector2.ONE * Globals.tileSize/2
-	return pos
-		
+	
 		
 func get_blocking_obj(velocity):
 	ray.cast_to = velocity
