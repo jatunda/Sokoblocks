@@ -40,6 +40,11 @@ _global_script_classes=[ {
 "path": "res://scenes/PushableRight.gd"
 }, {
 "base": "Pushable",
+"class": "Sideable",
+"language": "GDScript",
+"path": "res://scenes/Sideable.gd"
+}, {
+"base": "Pushable",
 "class": "Swappable",
 "language": "GDScript",
 "path": "res://scenes/Swappable.gd"
@@ -56,6 +61,7 @@ _global_script_class_icons={
 "Pullable": "",
 "Pushable": "",
 "PushableRight": "",
+"Sideable": "",
 "Swappable": "",
 "Utils": ""
 }

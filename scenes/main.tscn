@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Pickup.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://scenes/PushableRight.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/PushableLeft.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/FloorObj.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/Sideable.tscn" type="PackedScene" id=10]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
@@ -60,14 +61,14 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 546, 97 )
+position = Vector2( 426, 219 )
 collision_mask = 7
 
 [node name="TileMap" type="TileMap" parent="."]
 modulate = Color( 0.305882, 0.305882, 0.305882, 1 )
 tile_set = SubResource( 2 )
 format = 1
-tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 0, 65536, 0, 0, 65547, 0, 0, 65551, 0, 0, 131072, 0, 0, 131076, 0, 0, 131077, 0, 0, 131083, 0, 0, 131087, 0, 0, 196608, 0, 0, 196609, 0, 0, 196612, 0, 0, 196619, 0, 0, 196623, 0, 0, 262145, 0, 0, 262153, 0, 0, 262154, 0, 0, 262155, 0, 0, 262159, 0, 0, 327681, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 0, 0, 327695, 0, 0, 393217, 0, 0, 393221, 0, 0, 393231, 0, 0, 458752, 0, 0, 458753, 0, 0, 458767, 0, 0, 524288, 0, 0, 524289, 0, 0, 524290, 0, 0, 524291, 0, 0, 524292, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 524298, 0, 0, 524299, 0, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 0, 524303, 0, 0 )
+tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 0, 65536, 0, 0, 65547, 0, 0, 65551, 0, 0, 131072, 0, 0, 131076, 0, 0, 131077, 0, 0, 131083, 0, 0, 131087, 0, 0, 196608, 0, 0, 196611, 0, 0, 196612, 0, 0, 196623, 0, 0, 262144, 0, 0, 262145, 0, 0, 262154, 0, 0, 262155, 0, 0, 262159, 0, 0, 327681, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 0, 0, 327695, 0, 0, 393216, 0, 0, 393217, 0, 0, 393221, 0, 0, 393231, 0, 0, 458752, 0, 0, 458767, 0, 0, 524288, 0, 0, 524289, 0, 0, 524290, 0, 0, 524291, 0, 0, 524292, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 524298, 0, 0, 524299, 0, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 0, 524303, 0, 0 )
 
 [node name="Pickup" parent="." instance=ExtResource( 2 )]
 position = Vector2( 93, 93 )
@@ -76,7 +77,7 @@ position = Vector2( 93, 93 )
 position = Vector2( 544, 352 )
 
 [node name="Pushable2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 546, 160 )
+position = Vector2( 543, 412 )
 
 [node name="Pullable" parent="." instance=ExtResource( 4 )]
 position = Vector2( 288, 288 )
@@ -95,3 +96,6 @@ position = Vector2( 481, 157 )
 
 [node name="FloorObj" parent="." instance=ExtResource( 9 )]
 position = Vector2( 207, 345 )
+
+[node name="Sideable" parent="." instance=ExtResource( 10 )]
+position = Vector2( 427, 290 )
