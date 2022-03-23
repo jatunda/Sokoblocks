@@ -2,25 +2,20 @@ extends Pushable
 class_name Player
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-#export var angularSpeed = 1.0
 
+export var spriteFrames : SpriteFrames;
 
 onready var pickupDetector = $PickupDetection
-export var spriteFrames : SpriteFrames;
+
 var pulled_obj = null
 var left_obj = null
 var right_obj = null
 var to_be_saved = []
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	._ready()
 	sprite.frames = spriteFrames;
 	Globals.player = self;
-	pass # Replace with function body.
 
 
 func _physics_process(delta):
@@ -28,14 +23,16 @@ func _physics_process(delta):
 		if Utils.is_in_layer(body, Enums.LAYER_NAMES.Pickups):
 			process_pickup(body.pickupType)
 			body.queue_free()
-			pass
-#			body.destroy();
+			# Change to use a parameter that is editable by the SaveManager
+			# Have the disable boolean in charge of:
+			# > collision 
+			# > visibility
+			# > any possible signals
+
 
 func process_pickup(pickupType):
 	print("pickupType: %s (%s)" % [pickupType, Enums.PICKUP_TYPE.keys()[pickupType]])
-	pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_just_pressed("game_reset"):
 		save()
@@ -45,9 +42,9 @@ func _process(delta):
 		SaveManager.undo()
 		return	
 	
-	
 	var velocity = get_movement_input();
 	.try_move(velocity)
+		
 		
 func get_movement_input():
 	
@@ -67,6 +64,7 @@ func get_movement_input():
 	velocity = velocity * Globals.tileSize
 	return velocity
 	
+	
 func move(velocity:Vector2, recurse:bool=true) ->void:
 	.move(velocity)
 	pulled_obj = get_blocking_obj(-velocity) as Pullable
@@ -74,15 +72,21 @@ func move(velocity:Vector2, recurse:bool=true) ->void:
 		pulled_obj.try_move(velocity)
 		
 	right_obj = get_blocking_obj(velocity.rotated(PI/2)) as Sideable
-	if(right_obj != null):
+	var pushedObjMovingRight = false
+	var pushedObjMovingLeft = false
+	if(pushed_obj != null) and pushed_obj.className() == Enums.CLASS_NAME.PushableSide :
+		if pushed_obj.is_pushed_in_direction(velocity):
+			if pushed_obj.goes_left:
+				pushedObjMovingLeft = true
+			else:
+				pushedObjMovingRight = true
+	if(right_obj != null and not pushedObjMovingRight):
 		right_obj.try_move(velocity)
 	left_obj = get_blocking_obj(velocity.rotated(-PI/2)) as Sideable
-	if(left_obj != null):
+	if(left_obj != null and not pushedObjMovingLeft):
 		left_obj.try_move(velocity)
 	save()
 	SaveManager.next_frame()
-
-	
 
 	
 func save():

@@ -5,6 +5,7 @@
 
 [node name="PushableRight" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
+goes_left = false
 
 [node name="AnimatedSprite" parent="." index="2"]
 self_modulate = Color( 1, 0.588235, 0, 1 )

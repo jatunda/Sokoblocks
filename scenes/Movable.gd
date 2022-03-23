@@ -1,26 +1,18 @@
 extends Area2D
 class_name Movable
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+
 onready var sprite = $AnimatedSprite
 onready var ray = $RayCast2D
 onready var tween = $Tween
 
-
 var moving_dir = Vector2.ZERO
 
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	position = Utils.snap_2_grid(position)
 	save()
-	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 	
@@ -34,7 +26,6 @@ func can_move(velocity:Vector2, recurse:bool=true) -> bool:
 	
 
 func move(deltaPos:Vector2, recurse:bool=true)->void: 
-
 	var goalPos = position + deltaPos
 	goalPos = Utils.snap_2_grid(goalPos)
 	tween.interpolate_property(self, "position", position, goalPos,
@@ -42,6 +33,7 @@ func move(deltaPos:Vector2, recurse:bool=true)->void:
 	tween.start()
 	moving_dir = deltaPos
 	pass
+	
 	
 func is_moving() -> bool:
 	return moving_dir != Vector2.ZERO
