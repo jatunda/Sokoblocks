@@ -24,6 +24,8 @@ func can_move(velocity:Vector2, recurse: bool=true) -> bool:
 	if(recurse):
 		if(blocking_obj as Pushable != null):
 #			print(self, blocking_obj, blocking_obj.can_move(velocity, false))
+			# TODO BUGFIX: can push sidable like a normal pushable
+			# This bugfix probably includes a refactor so that checking for type is based on global Classes enum
 			if(blocking_obj.can_move(velocity, false)):
 				return true
 	return false
