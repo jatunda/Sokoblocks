@@ -9,3 +9,14 @@ enum LAYER_NAMES {
 enum PICKUP_TYPE {
 	Triangle,
 }
+enum CLASS_NAME {
+	Player,
+	Movable,
+	Pullable,
+	Pushable,
+	Sideable,
+	PushableSide,
+	FloorObj,
+	Pickup,
+	Swappable,
+}

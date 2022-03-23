@@ -75,3 +75,6 @@ func save() -> void:
 	SaveManager.save(self, save_data)
 	pass
 	
+func className():
+	return Enums.CLASS_NAME.Movable;
+	

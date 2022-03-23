@@ -33,3 +33,6 @@ func _physics_process(delta):
 		
 		
 	pass
+
+func className():
+	return Enums.CLASS_NAME.FloorObj;

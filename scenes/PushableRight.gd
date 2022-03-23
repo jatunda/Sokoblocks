@@ -61,3 +61,6 @@ func save() -> void:
 		"rotation_speedup": 1
 	}
 	SaveManager.save(self, param_dict)
+
+func className():
+	return Enums.CLASS_NAME.PushableSide;
